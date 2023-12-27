@@ -5,6 +5,7 @@ import { fetchProducts } from "../../api";
 import { PRODUCTS_RESOURCE } from "../../constants";
 import { Product } from "../../interfaces";
 import { ListOfCard } from "../../components/ListOfCard";
+import { ProductDetail } from "../../components/ProductDetail";
 
 export const Home = () => {
   const [items, setItems] = useState<Product[]>();
@@ -33,6 +34,7 @@ export const Home = () => {
           />
         ))}
       </ListOfCard>
+      <ProductDetail />
     </Layout>
   );
 };
