@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 type LayoutProps = {
-  children: JSX.Element | JSX.Element[] | string;
+  children: ReactNode;
 };
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {

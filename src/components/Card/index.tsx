@@ -16,7 +16,7 @@ export const Card: React.FC<CardProps> = ({
   price,
   title,
 }) => {
-  const { setCount } = useContext(ShoppingCartContext);
+  const { setCount, setIsProductDetail } = useContext(ShoppingCartContext);
 
   return (
     <div className="bg-white cursor-pointer w-56 h-60 rounded-lg">
@@ -33,7 +33,13 @@ export const Card: React.FC<CardProps> = ({
           className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
           onClick={() => setCount((prev) => prev + 1)}
         >
-          <PlusIcon className="h-6 w-6 text-black" />
+          <PlusIcon
+            className="h-6 w-6 text-black"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsProductDetail(true);
+            }}
+          />
         </div>
       </figure>
       <p className="flex justify-between">
