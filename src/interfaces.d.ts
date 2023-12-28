@@ -1,9 +1,9 @@
 export interface Category {
-  id: number;
+  id?: number;
   name: string;
-  image: string;
-  creationAt: string;
-  updatedAt: string;
+  image?: string;
+  creationAt?: string;
+  updatedAt?: string;
 }
 
 export interface Product {
@@ -11,8 +11,15 @@ export interface Product {
   title: string;
   price: number;
   description: string;
-  images: string[];
+  images: never[];
   creationAt: string;
   updatedAt: string;
   category: Category;
+}
+
+export interface CardProduct {
+  category: Product["category"];
+  images: Product["images"];
+  price: Product["price"];
+  title: Product["title"];
 }

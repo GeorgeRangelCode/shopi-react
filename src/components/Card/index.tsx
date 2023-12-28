@@ -1,22 +1,26 @@
 import React, { useContext } from "react";
-import { Product } from "../../interfaces";
+import { CardProduct } from "../../interfaces";
 import { ShoppingCartContext } from "../../context";
 import { PlusIcon } from "@heroicons/react/24/solid";
 
-export interface CardProps {
-  category: Product["category"];
-  images: Product["images"];
-  price: Product["price"];
-  title: Product["title"];
-}
-
-export const Card: React.FC<CardProps> = ({
+export const Card: React.FC<CardProduct> = ({
   category,
   images,
   price,
   title,
 }) => {
-  const { setCount, setIsProductDetail } = useContext(ShoppingCartContext);
+  const { setCount, setIsProductDetail, setProductToShow } =
+    useContext(ShoppingCartContext);
+
+  const showProduct = () => {
+    setIsProductDetail(true);
+    setProductToShow({
+      category,
+      images,
+      price,
+      title,
+    });
+  };
 
   return (
     <div className="bg-white cursor-pointer w-56 h-60 rounded-lg">
@@ -37,7 +41,7 @@ export const Card: React.FC<CardProps> = ({
             className="h-6 w-6 text-black"
             onClick={(e) => {
               e.stopPropagation();
-              setIsProductDetail(true);
+              showProduct();
             }}
           />
         </div>
